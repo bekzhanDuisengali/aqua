@@ -1,0 +1,18 @@
+{
+  "name": "aqua",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build:scss": "node scripts/build-scss.js",
+    "watch:scss": "node scripts/watch-scss.js",
+    "serve": "live-server --host=127.0.0.1 --port=3000 --no-browser --watch=index.html,assets/css,assets/img,assets/static.tildacdn.com/js,assets/neo.tildacdn.com/js",
+    "dev": "sh -c 'npm run watch:scss & npm run serve'"
+  },
+  "author": "Oleg Kovalev <ovkovalev@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.99.0"
+  }
+}
