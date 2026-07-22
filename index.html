@@ -7293,8 +7293,24 @@
                                         FOR DISTRIBUTION AND SALES PLEASE CONTACT
                                         <span class="contact-email-display">info@set-group.co.kr</span>
                                     </div>
-                                    <div>
-                                    </div>
+                                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                                        <input type="hidden" name="access_key" value="54575b13-ec12-4566-a2c9-d6f04a528eff">
+                                        <input type="hidden" name="subject" value="New contact form submission — AQUA">
+                                        <input type="hidden" name="from_name" value="AQUA Website">
+                                        <div class="contact-form__row">
+                                            <input class="contact-form__input form-field-line font-ui" type="text" name="name" placeholder="Full Name" required>
+                                        </div>
+                                        <div class="contact-form__row">
+                                            <input class="contact-form__input form-field-line font-ui" type="tel" name="phone" placeholder="+82 10 1234 5678" inputmode="tel" maxlength="20" required>
+                                        </div>
+                                        <div class="contact-form__row">
+                                            <input class="contact-form__input form-field-line font-ui" type="email" name="email" placeholder="Email" required>
+                                        </div>
+                                        <div class="contact-form__row">
+                                            <textarea class="contact-form__textarea form-field-line font-ui" name="message" placeholder="Message" rows="4" required></textarea>
+                                        </div>
+                                        <button class="contact-form__submit font-ui text-caption" type="submit">Send</button>
+                                    </form>
                             </td>
                         </tr>
                     </table>
@@ -7302,5 +7318,39 @@
             </div>
         </div>
     </div>
+    <script src="/assets/js/libphonenumber-js.min.js"></script>
+    <script>
+        (function () {
+            var form = document.querySelector('.contact-form');
+            var phoneInput = form && form.querySelector('input[name="phone"]');
+            if (!phoneInput || !window.libphonenumber) return;
+
+            var AsYouType = window.libphonenumber.AsYouType;
+            var isValidPhoneNumber = window.libphonenumber.isValidPhoneNumber;
+
+            phoneInput.addEventListener('input', function () {
+                var raw = this.value.replace(/[^\d+]/g, '');
+                if (raw && raw.charAt(0) !== '+') raw = '+' + raw;
+                var formatter = new AsYouType();
+                this.value = formatter.input(raw);
+                validate();
+            });
+
+            function validate() {
+                var value = phoneInput.value.trim();
+                var valid = value.length > 0 && isValidPhoneNumber(value);
+                phoneInput.setCustomValidity(valid ? '' : 'Enter a valid phone number with country code, e.g. +82 10 1234 5678');
+            }
+
+            phoneInput.addEventListener('blur', validate);
+            form.addEventListener('submit', function (e) {
+                validate();
+                if (!phoneInput.checkValidity()) {
+                    e.preventDefault();
+                    phoneInput.reportValidity();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

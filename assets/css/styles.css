@@ -16987,6 +16987,56 @@ body {
   border: 1px solid #b3b3b3;
 }
 
+.contact-form {
+  margin-top: 30px;
+  max-width: 400px;
+}
+
+.contact-form__row {
+  margin-bottom: 16px;
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background-color: transparent;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.contact-form__textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.contact-form__input::placeholder,
+.contact-form__textarea::placeholder {
+  color: #000000;
+  opacity: 0.5;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  border-color: #169fdb;
+}
+
+.contact-form__submit {
+  display: inline-block;
+  padding: 12px 32px;
+  color: #ffffff;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.contact-form__submit:hover {
+  background-color: #169fdb;
+}
+
 .text-caption {
   font-size: 14px;
 }
